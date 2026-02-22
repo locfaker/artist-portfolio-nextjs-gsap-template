@@ -11,7 +11,6 @@ import {
   useState,
 } from 'react';
 import gsap from 'gsap';
-import Image from 'next/image';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
@@ -44,16 +43,6 @@ const PRESS_TILE_HEIGHT = 0.2;
 const PRESS_TILE_WIDTH = (9 / 11) * PRESS_TILE_HEIGHT;
 const CAMERA_DISTANCE = 3;
 const PRESS_INTERACTION_DELAY_MS = 900;
-const SANITY_QUERY = `
-  *[_type == "cover"] | order(date desc) {
-    _id,
-    title,
-    date,
-    type,
-    "image": image.asset->url,
-    "imageAlt": image.alt
-  }
-`;
 
 const FALLBACK_MEDIA_ITEMS: CoverItem[] = [
   {
@@ -61,7 +50,7 @@ const FALLBACK_MEDIA_ITEMS: CoverItem[] = [
     title: 'Represented by KOL Managament / KOLAB Asia',
     date: '',
     type: 'media',
-    img: 'https://cdn.sanity.io/images/xgykflrm/production/741c637281e43900e7f02bbe69083a0d738ff237-497x621.jpg',
+    img: '/assets/images/becky_hero.webp',
     imageAlt: 'Represented by KOL Management / KOLAB Asia',
   },
   {
@@ -69,7 +58,7 @@ const FALLBACK_MEDIA_ITEMS: CoverItem[] = [
     title: "First Muse of Harper's BAZAAR Thailand",
     date: '',
     type: 'media',
-    img: 'https://cdn.sanity.io/images/xgykflrm/production/f1dae2627cd349bb2435e6d932a124c6f3923398-415x622.jpg',
+    img: '/assets/images/artist_hero.jpg',
     imageAlt: "First Muse of Harper's BAZAAR Thailand",
   },
   {
@@ -77,7 +66,7 @@ const FALLBACK_MEDIA_ITEMS: CoverItem[] = [
     title: "L'Oreal Paris Ambassador",
     date: '',
     type: 'media',
-    img: 'https://cdn.sanity.io/images/xgykflrm/production/88c9fd347ab77c6319d118a4520ed83b345ee29d-414x621.jpg',
+    img: '/assets/images/filmography_hero.jpg',
     imageAlt: "L'Oreal Paris Ambassador",
   },
   {
@@ -85,7 +74,7 @@ const FALLBACK_MEDIA_ITEMS: CoverItem[] = [
     title: 'collaborations',
     date: '',
     type: 'media',
-    img: 'https://cdn.sanity.io/images/xgykflrm/production/b10f89286dd23ad23b07b36c298ac6d49b410e74-1587x2245.png',
+    img: '/assets/images/becky_hero.webp',
     imageAlt: 'Collaborations',
   },
   {
@@ -93,7 +82,7 @@ const FALLBACK_MEDIA_ITEMS: CoverItem[] = [
     title: 'CHANEL House Ambassador',
     date: '',
     type: 'media',
-    img: 'https://cdn.sanity.io/images/xgykflrm/production/59a204ce5fa2d21caf6e1813c97d93080ecae62a-497x621.jpg',
+    img: '/assets/images/artist_hero.jpg',
     imageAlt: 'CHANEL House Ambassador',
   },
 ];
@@ -104,7 +93,23 @@ const FALLBACK_PRESS_ITEMS: CoverItem[] = [
     title: 'PRESS',
     date: '',
     type: 'press',
-    img: 'https://cdn.sanity.io/images/xgykflrm/production/52d09c78240273dd74403cc88636ea619a3a70f5-1080x1349.webp',
+    img: '/assets/images/becky_hero.webp',
+    imageAlt: 'Press cover',
+  },
+  {
+    id: 'press-fallback-2',
+    title: 'PRESS',
+    date: '',
+    type: 'press',
+    img: '/assets/images/artist_hero.jpg',
+    imageAlt: 'Press cover',
+  },
+  {
+    id: 'press-fallback-3',
+    title: 'PRESS',
+    date: '',
+    type: 'press',
+    img: '/assets/images/filmography_hero.jpg',
     imageAlt: 'Press cover',
   },
 ];
@@ -134,14 +139,7 @@ function normalizeCover(raw: {
 }
 
 async function fetchCovers(signal: AbortSignal): Promise<CoverItem[]> {
-  const params = new URLSearchParams({
-    query: SANITY_QUERY,
-    returnQuery: 'false',
-  });
-  const response = await fetch(
-    `https://xgykflrm.apicdn.sanity.io/v2024-01-01/data/query/production?${params.toString()}`,
-    { signal },
-  );
+  const response = await fetch('/api/media/covers', { signal });
 
   if (!response.ok) {
     throw new Error(`Failed to fetch covers. Status ${response.status}`);
@@ -919,14 +917,11 @@ export default function MediaPage() {
               {sliderItems.map((item, index) => (
                 <div key={`${item.id}-${index}`} className="media-slide">
                   <div className="media-slide-image-wrapper">
-                    <Image
+                    <img
                       src={item.img}
                       alt={item.imageAlt || item.title}
                       className="media-slide-image"
-                      width={420}
-                      height={560}
                       draggable={false}
-                      priority={index < mediaItems.length}
                     />
                   </div>
                   <div className="media-slide-content">
