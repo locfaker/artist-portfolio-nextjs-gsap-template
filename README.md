@@ -8,19 +8,7 @@ This project is a modern portfolio web experience built with Next.js App Router,
 
 ## Demo Video
 
-<p align="center">
-  <a href="https://web3d-eosin-alpha.vercel.app/demo/fshare_facbook.mp4">
-    <img
-      src="public/demo/readme-video-preview.svg"
-      alt="Watch demo video"
-      width="980"
-    />
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://web3d-eosin-alpha.vercel.app/demo/fshare_facbook.mp4"><strong>▶ Play Full Demo Video</strong></a>
-</p>
+<https://github.com/user-attachments/assets/3bcaa644-d14b-4a35-a4d6-fca283fb8609>
 
 ## Core Experience
 
