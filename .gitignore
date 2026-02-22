@@ -49,3 +49,5 @@ sample-*.css
 snippet_*.txt
 tmp_*.txt
 tmp_*/
+
+.vercel
