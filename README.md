@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+﻿# Artist Portfolio Next.js GSAP Template
 
-## Getting Started
+A multi-page artist portfolio website built with Next.js App Router, GSAP animations, and Three.js media interactions.
 
-First, run the development server:
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- GSAP + ScrollTrigger
+- Three.js
+
+## Project Structure
+
+- `src/app/artist` - artist page
+- `src/app/filmography` - filmography page with hover preview logic
+- `src/app/media` - media page with interactive visuals
+- `src/components` - shared layout and UI components
+- `public/assets` - fonts and static assets
+
+## Prerequisites
+
+- Node.js 18+ (recommend 20+)
+- npm 9+
+
+## Local Setup
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `http://localhost:3000`
+- `http://localhost:3000/artist`
+- `http://localhost:3000/filmography`
+- `http://localhost:3000/media`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Production Build
 
-## Learn More
+```bash
+npm run lint
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment (Vercel)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Option 1: Deploy from GitHub
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push this repo to GitHub.
+2. Import the repository at https://vercel.com/new.
+3. Framework preset: Next.js (auto-detected).
+4. Build command: `npm run build` (default).
+5. Output directory: `.next` (default).
+6. Click Deploy.
 
-## Deploy on Vercel
+### Option 2: Deploy with Vercel CLI
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm i -g vercel
+vercel
+vercel --prod
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes
+
+- Media data currently fetches from a public Sanity endpoint in `src/app/media/page.tsx`.
+- Replace assets, text, and branding before commercial use.
