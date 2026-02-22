@@ -9,19 +9,17 @@ This project is a modern portfolio web experience built with Next.js App Router,
 ## Demo Video
 
 <p align="center">
-  <video
-    src="https://raw.githubusercontent.com/locfaker/artist-portfolio-nextjs-gsap-template/main/public/demo/fshare_facbook.mp4"
-    controls
-    width="960"
-  >
-    Your browser does not support the video tag.
-  </video>
+  <a href="https://web3d-eosin-alpha.vercel.app/demo/fshare_facbook.mp4">
+    <img
+      src="public/demo/readme-video-preview.svg"
+      alt="Watch demo video"
+      width="980"
+    />
+  </a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/locfaker/artist-portfolio-nextjs-gsap-template/blob/main/public/demo/fshare_facbook.mp4">
-    Open demo video in GitHub
-  </a>
+  <a href="https://web3d-eosin-alpha.vercel.app/demo/fshare_facbook.mp4"><strong>▶ Play Full Demo Video</strong></a>
 </p>
 
 ## Core Experience
